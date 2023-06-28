@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../images/mdi_periodic-table-carbon-dioxide.png</file>
+    </qresource>
+</RCC>

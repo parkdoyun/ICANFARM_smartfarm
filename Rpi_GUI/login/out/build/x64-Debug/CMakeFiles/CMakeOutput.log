@@ -1,0 +1,33 @@
+The system is: Windows - 10.0.19045 - AMD64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.35.32215/bin/Hostx64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) C/C++ 최적화 컴파일러 버전 19.35.32215(x64)
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CMakeCXXCompilerId.cpp
+Microsoft (R) Incremental Linker Version 14.35.32215.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCXXCompilerId.exe 
+CMakeCXXCompilerId.obj 
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/SSAFY/Documents/untitled/out/build/x64-Debug/CMakeFiles/3.25.1-msvc1/CompilerIdCXX/CMakeCXXCompilerId.exe"
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/SSAFY/Documents/untitled/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-xqhsrp
+
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_921d1 && [1/2] Building CXX object CMakeFiles\cmTC_921d1.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_921d1.exe
+
+
+

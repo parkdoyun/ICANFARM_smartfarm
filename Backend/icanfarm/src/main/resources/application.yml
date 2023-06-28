@@ -1,0 +1,122 @@
+spring:
+  profiles:
+    active:
+      - local2
+    group:
+      local:
+        - dev
+        - jwt
+        - mqtt
+      local2:
+        - dev2
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  # H2
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  # Database
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/test
+    username: sa
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+  # MongoDB
+  data:
+    mongodb:
+      host: localhost
+      port: 27020
+      authentication-database: farmData
+      database: farmData
+      username: icfarm
+      password: a206
+
+logging:
+  level:
+    org.hibernate:
+      type.descriptor.sql: trace
+      SQL: DEBUG
+    com.icanfarm.icanfarm: DEBUG
+    org.mongodb.driver: INFO
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev2
+
+  # MariaDB
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3336/farmData
+    username: root
+    password: a206
+  # JPA
+  jpa:
+    # hibernate 오류
+    #database: mariadb
+    #database-platform: org.hibernate.dialect.MariaDBDialect
+
+    hibernate:
+      ddl-auto: valid
+    properties:
+      hibernate:
+        format_sql: true
+  # MongoDB
+  data:
+    mongodb:
+      host: localhost
+      port: 27020
+      authentication-database: farmData
+      database: farmData
+      username: icfarm
+      password: a206
+
+logging:
+  level:
+    org.hibernate:
+      type.descriptor.sql: trace
+      SQL: DEBUG
+    com.icanfarm.icanfarm: DEBUG
+    org.mongodb.driver: INFO
+
+server:
+  port: 8090
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: jwt
+
+jwt:
+  header: Authorization
+  secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
+  access-token-validity-in-seconds: 600
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: mqtt
+
+mqtt:
+  username: i_can_farm
+  password: 1234
+  url: tcp://k8a206.p.ssafy.io:3333
+  topic: test_mqtt

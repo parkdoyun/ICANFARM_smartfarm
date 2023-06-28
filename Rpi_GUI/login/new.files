@@ -1,0 +1,12 @@
+CMakeLists.txt
+LogoImage.qrc
+LogoText.qrc
+logo image.png
+logo text.png
+main.cpp
+mainwindow.cpp
+mainwindow.h
+mainwindow.ui
+out/build/x64-Debug/CMakeFiles/3.25.1-msvc1/CompilerIdCXX/CMakeCXXCompilerId.cpp
+out/build/x64-Debug/CMakeFiles/ShowIncludes/foo.h
+out/build/x64-Debug/CMakeFiles/ShowIncludes/main.c

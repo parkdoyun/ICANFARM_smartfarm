@@ -1,0 +1,79 @@
+/*
+ * CAN.h
+ *
+ *  Created on: 15-Jun-2022
+ *      Author: Kunal
+ */
+
+#ifndef CAN_H_
+#define CAN_H_
+
+#include "main.h"
+#include "Core/GPIO.h"
+#include "CAN_defines.h"
+
+#define Transmit_Mailbox_Empty	CAN_IER_TMEIE	// 전송 메일박스가 비어있음을 나타내는 상수
+#define Fifo0_Message_Pending	CAN_IER_FMPIE0	// FIFO0에 메세지가 대기중임을 나타내는 상수
+#define Fifo1_Message_Pending	CAN_IER_FMPIE1
+#define Fifo0_Full				CAN_IER_FFIE0	// FIFO0가 가득찼음을 나타내는 상수
+#define Fifo1_Full				CAN_IER_FFIE1
+#define Fifo0_Overflow			CAN_IER_FOVIE0	// FIFO0의 오버플로우가 발생함을 나타내는 상수
+#define Fifo1_Overflow			CAN_IER_FOVIE1
+
+typedef struct CAN_RX_Typedef	// 수신된 CAN메시지 정보 저장 구조체
+{
+	int message_timestamp;
+	int data_length;
+	int data[8];
+	int filter_index;
+	int frame_type;
+	int id_type;
+	int32_t ID;
+}CAN_RX_Typedef;
+
+typedef struct CAN_Filter_TypeDef{	// CAN필터 설정 정보 저장 구조체
+	int filter_id;
+	int enable;
+	int id_type;
+	int frame_type;
+	int type;
+	int scale;
+	int bank_id;	// CAN컨트롤러에는 여려개의 필터 은행이 있고, bank_id를 이용해서 어떤 은행에 해당 필터를 할당할지 명시하는 값
+	uint32_t ID;
+}CAN_Filter_TypeDef;
+
+typedef struct CAN_TX_Typedef{	// 송신된 CAN메시지 정보 저장 구조체
+	int id_type;
+	int frame_type;
+	int send_timestamp;
+	int32_t ID;
+	int data_length;
+	int data[8];
+}CAN_TX_Typedef;
+
+typedef struct CAN_Init_Typedef	//CAN 초기화 정보를 저장하는 구조체
+{
+	CAN_TypeDef *CAN_INSTANCE;			//CAN1 OR CAN2 인스턴스 정보
+	int32_t baudrate;
+	int timestamp_enable;
+	int interrupt;
+}CAN_Init_Typedef;
+
+
+
+// CAN통신 초기화 함수(초기화정보)
+int CAN_Init(CAN_Init_Typedef *init);
+
+// CAN필터 초기화 함수(초기화정보, 필터정보)
+int CAN_Filter_Init(CAN_Init_Typedef *init, CAN_Filter_TypeDef *filter);
+
+// CAN 통신을 시작하는 함수(초기화정보)
+void CAN_Start(CAN_Init_Typedef *init);
+
+// CAN 메시지를 전송하는 함수(초기화정보, 전송메시지정보)
+void CAN_Send_Packet(CAN_Init_Typedef *init, CAN_TX_Typedef *tx);
+
+//  CAN 메시지를 수신하는 함수(초기화정보, 수신메시지정보)
+void CAN_Get_Packet(CAN_Init_Typedef *init, CAN_RX_Typedef *rx);
+
+#endif /* CAN_H_ */

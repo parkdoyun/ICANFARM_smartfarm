@@ -1,0 +1,10 @@
+version: "3.1"
+
+services:
+  maria:
+    build:
+      dockerfile: Dockerfile
+    container_name: farm-maria
+    ports:
+      - "3336:3306"
+    restart: always

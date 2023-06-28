@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  jenkins-test:
+    container_name: jenkins-test
+    build:
+            dockerfile: Dockerfile
+    image: jenkins/jenkins:lts
+    user: root
+    volumes:
+      - ./jenkins:/var/jenkins_home
+    ports:
+      - 8888:8080
